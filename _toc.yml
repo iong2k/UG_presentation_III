@@ -1,0 +1,7 @@
+format: jb-book
+root: intro
+chapters:
+- file: 導論.md
+- file: 360.ipynb
+- file: final.md
+
