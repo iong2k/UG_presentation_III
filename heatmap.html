@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'heatmap';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="基礎設施整備與木業地景" href="history.html" />
+    <link rel="prev" title="木業基礎設施與田浦" href="history.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="history.html"><strong>基礎設施整備與木業地景</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">木業基礎設施與田浦</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>產業據點與區位</strong></a></li>
 </ul>
 
@@ -370,7 +370,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">田浦的區位因素</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">田浦的木業襲產</a></li>
 </ul>
             </nav>
         </div>
@@ -409,6 +409,7 @@ document.write(`
     <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;一成木材行&quot;</span><span class="p">,</span> <span class="s2">&quot;lat&quot;</span><span class="p">:</span> <span class="mf">23.9729168</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">:</span> <span class="mf">121.6015107</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">1978</span><span class="p">},</span>
     <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;燕茂企業股份有限公司&quot;</span><span class="p">,</span> <span class="s2">&quot;lat&quot;</span><span class="p">:</span> <span class="mf">23.9571253</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">:</span> <span class="mf">121.593387</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">1973</span><span class="p">},</span>
 <span class="p">]</span>
+
 <span class="k">def</span><span class="w"> </span><span class="nf">year_category</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">year</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;無年份&quot;</span>
@@ -421,10 +422,12 @@ document.write(`
     <span class="s2">&quot;1990年（含）以後&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
     <span class="s2">&quot;無年份&quot;</span><span class="p">:</span> <span class="s2">&quot;gray&quot;</span>
 <span class="p">}</span>
+
 <span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
     <span class="n">location</span><span class="o">=</span><span class="n">hualien_center</span><span class="p">,</span>
     <span class="n">zoom_start</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span>
-    <span class="n">tiles</span><span class="o">=</span><span class="s2">&quot;CartoDB positron&quot;</span>
+    <span class="n">tiles</span><span class="o">=</span><span class="s2">&quot;CartoDB positron&quot;</span><span class="p">,</span>
+    <span class="n">control_scale</span><span class="o">=</span><span class="kc">True</span> 
 <span class="p">)</span>
 
 <span class="k">for</span> <span class="n">shop</span> <span class="ow">in</span> <span class="n">wood_shops</span><span class="p">:</span>
@@ -441,6 +444,13 @@ document.write(`
         <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="s2">&quot;tree&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;fa&quot;</span><span class="p">)</span>
     <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 
+<span class="n">north_arrow</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;div style=&quot;</span>
+<span class="s2">    position: fixed;top: 20px;right: 20px;width: 60px;height: 60px;z-index:9999;font-size: 18px;text-align: center;font-weight: bold;color: black;&quot;&gt;</span>
+<span class="s2">    ↑&lt;br&gt;N</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">get_root</span><span class="p">()</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">folium</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="n">north_arrow</span><span class="p">))</span>
 <span class="n">m</span>
 </pre></div>
 </div>
@@ -465,7 +475,7 @@ document.write(`
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_4ecbfc5f5dc9611d845c959f7ee35ae3 {
+                #map_dedaa70fae0ff8de41e0a06ff60bd0de {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -502,14 +512,19 @@ document.write(`
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_4ecbfc5f5dc9611d845c959f7ee35ae3&quot; &gt;&lt;/div&gt;
+&lt;div style=&quot;
+    position: fixed;top: 20px;right: 20px;width: 60px;height: 60px;z-index:9999;font-size: 18px;text-align: center;font-weight: bold;color: black;&quot;&gt;
+    ↑&lt;br&gt;N
+&lt;/div&gt;
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_dedaa70fae0ff8de41e0a06ff60bd0de&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_4ecbfc5f5dc9611d845c959f7ee35ae3 = L.map(
-                &quot;map_4ecbfc5f5dc9611d845c959f7ee35ae3&quot;,
+            var map_dedaa70fae0ff8de41e0a06ff60bd0de = L.map(
+                &quot;map_dedaa70fae0ff8de41e0a06ff60bd0de&quot;,
                 {
                     center: [23.9769, 121.6044],
                     crs: L.CRS.EPSG3857,
@@ -521,12 +536,13 @@ document.write(`
 
                 }
             );
+            L.control.scale().addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
 
             
 
         
     
-            var tile_layer_334eeae559171807a00470e02c592998 = L.tileLayer(
+            var tile_layer_311df9a0762eda6974d65d2aff3c263a = L.tileLayer(
                 &quot;https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png&quot;,
                 {
   &quot;minZoom&quot;: 0,
@@ -543,17 +559,17 @@ document.write(`
             );
         
     
-            tile_layer_334eeae559171807a00470e02c592998.addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            tile_layer_311df9a0762eda6974d65d2aff3c263a.addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var marker_663809c1544236abdd2f7841203f45f5 = L.marker(
+            var marker_5936cab3beb538b4f39216c10abe5058 = L.marker(
                 [23.9631485, 121.5733806],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_5ec0496cbb526f38cff347d8a227826e = L.AwesomeMarkers.icon(
+            var icon_fc6c8c725888bc4518693c2e54a21ac3 = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;green&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -564,34 +580,34 @@ document.write(`
             );
         
     
-        var popup_fc9c490b68f885ad74d194deff4435af = L.popup({
+        var popup_b923fc2b4ce035c235f2d556a03f0923 = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_0c2bec15a44308d8c50d617de0588c92 = $(`&lt;div id=&quot;html_0c2bec15a44308d8c50d617de0588c92&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;大源木業股份有限公司&lt;br&gt;營業登記年：1969&lt;/div&gt;`)[0];
-                popup_fc9c490b68f885ad74d194deff4435af.setContent(html_0c2bec15a44308d8c50d617de0588c92);
+                var html_e99755bd43428c8f969e9f7341cdcb1a = $(`&lt;div id=&quot;html_e99755bd43428c8f969e9f7341cdcb1a&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;大源木業股份有限公司&lt;br&gt;營業登記年：1969&lt;/div&gt;`)[0];
+                popup_b923fc2b4ce035c235f2d556a03f0923.setContent(html_e99755bd43428c8f969e9f7341cdcb1a);
             
         
 
-        marker_663809c1544236abdd2f7841203f45f5.bindPopup(popup_fc9c490b68f885ad74d194deff4435af)
+        marker_5936cab3beb538b4f39216c10abe5058.bindPopup(popup_b923fc2b4ce035c235f2d556a03f0923)
         ;
 
         
     
     
-                marker_663809c1544236abdd2f7841203f45f5.setIcon(icon_5ec0496cbb526f38cff347d8a227826e);
+                marker_5936cab3beb538b4f39216c10abe5058.setIcon(icon_fc6c8c725888bc4518693c2e54a21ac3);
             
     
-            var marker_808d94dc6481e2e1d1eaf7eaf6b85dba = L.marker(
+            var marker_a82aed30880df96f6bdf79291b49d2ae = L.marker(
                 [23.9765539, 121.586245],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_90e0ac87b9369f4d33fd3b1e1d9e07c6 = L.AwesomeMarkers.icon(
+            var icon_0b30a3c60f94b0d4194897b95d4644f3 = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;red&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -602,34 +618,34 @@ document.write(`
             );
         
     
-        var popup_2e67aac3b7786d4698a2d3a61f68a8fa = L.popup({
+        var popup_25470116437809e42e2b2f5208e9e4f4 = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_42f1bc42094ecd6842bf6990282a65d4 = $(`&lt;div id=&quot;html_42f1bc42094ecd6842bf6990282a65d4&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;朝盛木材行&lt;br&gt;營業登記年：2014&lt;/div&gt;`)[0];
-                popup_2e67aac3b7786d4698a2d3a61f68a8fa.setContent(html_42f1bc42094ecd6842bf6990282a65d4);
+                var html_32483b72bf2a7b029e9ca30eb1e98a50 = $(`&lt;div id=&quot;html_32483b72bf2a7b029e9ca30eb1e98a50&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;朝盛木材行&lt;br&gt;營業登記年：2014&lt;/div&gt;`)[0];
+                popup_25470116437809e42e2b2f5208e9e4f4.setContent(html_32483b72bf2a7b029e9ca30eb1e98a50);
             
         
 
-        marker_808d94dc6481e2e1d1eaf7eaf6b85dba.bindPopup(popup_2e67aac3b7786d4698a2d3a61f68a8fa)
+        marker_a82aed30880df96f6bdf79291b49d2ae.bindPopup(popup_25470116437809e42e2b2f5208e9e4f4)
         ;
 
         
     
     
-                marker_808d94dc6481e2e1d1eaf7eaf6b85dba.setIcon(icon_90e0ac87b9369f4d33fd3b1e1d9e07c6);
+                marker_a82aed30880df96f6bdf79291b49d2ae.setIcon(icon_0b30a3c60f94b0d4194897b95d4644f3);
             
     
-            var marker_15c50726ae1e44d58b0a7bec5fe7cf30 = L.marker(
+            var marker_5403f3424d7e638b3e9cb1552f3494c1 = L.marker(
                 [23.9712618, 121.6014286],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_5097c3e48526c0d77fd61996b1101b6f = L.AwesomeMarkers.icon(
+            var icon_14a5390bbdc1cc53a8b5dcb165cb9655 = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;green&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -640,34 +656,34 @@ document.write(`
             );
         
     
-        var popup_d8ed493ad02ba143c66b515278c4449a = L.popup({
+        var popup_744be39f35dacb81c6930377b472b0a4 = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_da2ba519f3e8fb2ddff565ef2ec571bc = $(`&lt;div id=&quot;html_da2ba519f3e8fb2ddff565ef2ec571bc&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;大永發建材行&lt;br&gt;營業登記年：1979&lt;/div&gt;`)[0];
-                popup_d8ed493ad02ba143c66b515278c4449a.setContent(html_da2ba519f3e8fb2ddff565ef2ec571bc);
+                var html_c535c44b5c81aec04172a0c75af6b995 = $(`&lt;div id=&quot;html_c535c44b5c81aec04172a0c75af6b995&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;大永發建材行&lt;br&gt;營業登記年：1979&lt;/div&gt;`)[0];
+                popup_744be39f35dacb81c6930377b472b0a4.setContent(html_c535c44b5c81aec04172a0c75af6b995);
             
         
 
-        marker_15c50726ae1e44d58b0a7bec5fe7cf30.bindPopup(popup_d8ed493ad02ba143c66b515278c4449a)
+        marker_5403f3424d7e638b3e9cb1552f3494c1.bindPopup(popup_744be39f35dacb81c6930377b472b0a4)
         ;
 
         
     
     
-                marker_15c50726ae1e44d58b0a7bec5fe7cf30.setIcon(icon_5097c3e48526c0d77fd61996b1101b6f);
+                marker_5403f3424d7e638b3e9cb1552f3494c1.setIcon(icon_14a5390bbdc1cc53a8b5dcb165cb9655);
             
     
-            var marker_18498ac9bb152e85724a809520d765c0 = L.marker(
+            var marker_07c40452a6478730792ecaf9dbda1753 = L.marker(
                 [23.9721847, 121.5780551],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_9076d712f3d207919da97b8761066b40 = L.AwesomeMarkers.icon(
+            var icon_bc251d2c8f00e9ab6a9c89e0caa70c03 = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;green&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -678,34 +694,34 @@ document.write(`
             );
         
     
-        var popup_4631073492660af9ecced8510f8a86db = L.popup({
+        var popup_07b06af75a7e7fc925a0f00ca7faf5b6 = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_57e1ba963e8a50ad97df2cd47f91b218 = $(`&lt;div id=&quot;html_57e1ba963e8a50ad97df2cd47f91b218&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;東新木業行&lt;br&gt;營業登記年：1980&lt;/div&gt;`)[0];
-                popup_4631073492660af9ecced8510f8a86db.setContent(html_57e1ba963e8a50ad97df2cd47f91b218);
+                var html_38f59811f063f54537c06a4f060db7ef = $(`&lt;div id=&quot;html_38f59811f063f54537c06a4f060db7ef&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;東新木業行&lt;br&gt;營業登記年：1980&lt;/div&gt;`)[0];
+                popup_07b06af75a7e7fc925a0f00ca7faf5b6.setContent(html_38f59811f063f54537c06a4f060db7ef);
             
         
 
-        marker_18498ac9bb152e85724a809520d765c0.bindPopup(popup_4631073492660af9ecced8510f8a86db)
+        marker_07c40452a6478730792ecaf9dbda1753.bindPopup(popup_07b06af75a7e7fc925a0f00ca7faf5b6)
         ;
 
         
     
     
-                marker_18498ac9bb152e85724a809520d765c0.setIcon(icon_9076d712f3d207919da97b8761066b40);
+                marker_07c40452a6478730792ecaf9dbda1753.setIcon(icon_bc251d2c8f00e9ab6a9c89e0caa70c03);
             
     
-            var marker_ddfb9c08b48277b77972f98015ca55a7 = L.marker(
+            var marker_220fae00e9c23717db4e753d9c816d17 = L.marker(
                 [23.9511861, 121.590686],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_71ff373c87430bfddabee76cc8931057 = L.AwesomeMarkers.icon(
+            var icon_ef02404f05dfda0e79ecc97a10b4d7f1 = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;green&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -716,34 +732,34 @@ document.write(`
             );
         
     
-        var popup_606a86658763faf56c054a9a80954ba9 = L.popup({
+        var popup_69635993e711ec251fe59c03b331fcbf = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_fc4cdbaea0663b23dfd2164375f50b47 = $(`&lt;div id=&quot;html_fc4cdbaea0663b23dfd2164375f50b47&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;嘉益木材行&lt;br&gt;營業登記年：1973&lt;/div&gt;`)[0];
-                popup_606a86658763faf56c054a9a80954ba9.setContent(html_fc4cdbaea0663b23dfd2164375f50b47);
+                var html_e29b892b425b3c7549f34bf11b300139 = $(`&lt;div id=&quot;html_e29b892b425b3c7549f34bf11b300139&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;嘉益木材行&lt;br&gt;營業登記年：1973&lt;/div&gt;`)[0];
+                popup_69635993e711ec251fe59c03b331fcbf.setContent(html_e29b892b425b3c7549f34bf11b300139);
             
         
 
-        marker_ddfb9c08b48277b77972f98015ca55a7.bindPopup(popup_606a86658763faf56c054a9a80954ba9)
+        marker_220fae00e9c23717db4e753d9c816d17.bindPopup(popup_69635993e711ec251fe59c03b331fcbf)
         ;
 
         
     
     
-                marker_ddfb9c08b48277b77972f98015ca55a7.setIcon(icon_71ff373c87430bfddabee76cc8931057);
+                marker_220fae00e9c23717db4e753d9c816d17.setIcon(icon_ef02404f05dfda0e79ecc97a10b4d7f1);
             
     
-            var marker_93d6cc31c48ccfedf7952d7ac3d68d93 = L.marker(
+            var marker_2997e1afb2286e408999e292d2614a69 = L.marker(
                 [23.95916, 121.593787],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_1aee14f50958a5f9ab0b97ea032cceb3 = L.AwesomeMarkers.icon(
+            var icon_b9a443a3578f3e220b57dba42aa9d2a1 = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;red&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -754,34 +770,34 @@ document.write(`
             );
         
     
-        var popup_436cc9017f006b7e23f22990cfad5653 = L.popup({
+        var popup_7ebce38b0cc3004334a46173e85f1a31 = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_beb02e86ecd3f5ebcfddb60d40a00b62 = $(`&lt;div id=&quot;html_beb02e86ecd3f5ebcfddb60d40a00b62&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;松梧木材行&lt;br&gt;營業登記年：1994&lt;/div&gt;`)[0];
-                popup_436cc9017f006b7e23f22990cfad5653.setContent(html_beb02e86ecd3f5ebcfddb60d40a00b62);
+                var html_c34086d5e402e2a94b9a0f7f90ad7fb9 = $(`&lt;div id=&quot;html_c34086d5e402e2a94b9a0f7f90ad7fb9&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;松梧木材行&lt;br&gt;營業登記年：1994&lt;/div&gt;`)[0];
+                popup_7ebce38b0cc3004334a46173e85f1a31.setContent(html_c34086d5e402e2a94b9a0f7f90ad7fb9);
             
         
 
-        marker_93d6cc31c48ccfedf7952d7ac3d68d93.bindPopup(popup_436cc9017f006b7e23f22990cfad5653)
+        marker_2997e1afb2286e408999e292d2614a69.bindPopup(popup_7ebce38b0cc3004334a46173e85f1a31)
         ;
 
         
     
     
-                marker_93d6cc31c48ccfedf7952d7ac3d68d93.setIcon(icon_1aee14f50958a5f9ab0b97ea032cceb3);
+                marker_2997e1afb2286e408999e292d2614a69.setIcon(icon_b9a443a3578f3e220b57dba42aa9d2a1);
             
     
-            var marker_df3b26499d74a83c28c11fbc776b6b89 = L.marker(
+            var marker_7173f8c4c239a204f2e312366817c4ef = L.marker(
                 [23.9977314, 121.6017339],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_261e7a6bd7f99a853a5908c3e69387f2 = L.AwesomeMarkers.icon(
+            var icon_10f4285157c0f6039066144312bd9a5b = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;gray&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -792,34 +808,34 @@ document.write(`
             );
         
     
-        var popup_3d6265a65f2923b9861542522f3606ad = L.popup({
+        var popup_68d8f0aaf74fdd3f2ebe83eb2edb9cc6 = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_83cd3ba65822f43aeea03aed225b7940 = $(`&lt;div id=&quot;html_83cd3ba65822f43aeea03aed225b7940&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;勝裕建材行&lt;br&gt;營業登記年：未知&lt;/div&gt;`)[0];
-                popup_3d6265a65f2923b9861542522f3606ad.setContent(html_83cd3ba65822f43aeea03aed225b7940);
+                var html_0bf81704a4b71ed5232b30adfbcaded0 = $(`&lt;div id=&quot;html_0bf81704a4b71ed5232b30adfbcaded0&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;勝裕建材行&lt;br&gt;營業登記年：未知&lt;/div&gt;`)[0];
+                popup_68d8f0aaf74fdd3f2ebe83eb2edb9cc6.setContent(html_0bf81704a4b71ed5232b30adfbcaded0);
             
         
 
-        marker_df3b26499d74a83c28c11fbc776b6b89.bindPopup(popup_3d6265a65f2923b9861542522f3606ad)
+        marker_7173f8c4c239a204f2e312366817c4ef.bindPopup(popup_68d8f0aaf74fdd3f2ebe83eb2edb9cc6)
         ;
 
         
     
     
-                marker_df3b26499d74a83c28c11fbc776b6b89.setIcon(icon_261e7a6bd7f99a853a5908c3e69387f2);
+                marker_7173f8c4c239a204f2e312366817c4ef.setIcon(icon_10f4285157c0f6039066144312bd9a5b);
             
     
-            var marker_d38d504536d431e8a9c5bec38970bb85 = L.marker(
+            var marker_c5955a1fc3464a66bd99b61e2b897fb4 = L.marker(
                 [23.9547848, 121.5631098],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_0bbac72416b8c8f33e1ed9e3e696b848 = L.AwesomeMarkers.icon(
+            var icon_73e3b79122db6d08e91ae0404bdcb8c1 = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;red&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -830,34 +846,34 @@ document.write(`
             );
         
     
-        var popup_89b6378dbee855d70883c0f43ccb29bb = L.popup({
+        var popup_5d6ac21c9e89a4393c37affc78a725a2 = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_597f06f63bf7adb1549a8e7f0d801fed = $(`&lt;div id=&quot;html_597f06f63bf7adb1549a8e7f0d801fed&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;華信昌實業&lt;br&gt;營業登記年：2004&lt;/div&gt;`)[0];
-                popup_89b6378dbee855d70883c0f43ccb29bb.setContent(html_597f06f63bf7adb1549a8e7f0d801fed);
+                var html_e82803d015348601077d537dd65c5930 = $(`&lt;div id=&quot;html_e82803d015348601077d537dd65c5930&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;華信昌實業&lt;br&gt;營業登記年：2004&lt;/div&gt;`)[0];
+                popup_5d6ac21c9e89a4393c37affc78a725a2.setContent(html_e82803d015348601077d537dd65c5930);
             
         
 
-        marker_d38d504536d431e8a9c5bec38970bb85.bindPopup(popup_89b6378dbee855d70883c0f43ccb29bb)
+        marker_c5955a1fc3464a66bd99b61e2b897fb4.bindPopup(popup_5d6ac21c9e89a4393c37affc78a725a2)
         ;
 
         
     
     
-                marker_d38d504536d431e8a9c5bec38970bb85.setIcon(icon_0bbac72416b8c8f33e1ed9e3e696b848);
+                marker_c5955a1fc3464a66bd99b61e2b897fb4.setIcon(icon_73e3b79122db6d08e91ae0404bdcb8c1);
             
     
-            var marker_b692c47a365de8320effc450fd59b0ce = L.marker(
+            var marker_1b3c095722fd4d965ae12aafd702fe9f = L.marker(
                 [23.9736972, 121.5737778],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_c5de2f58dcac0a2eaa5b8467943fa21a = L.AwesomeMarkers.icon(
+            var icon_5403c9881765d0381ac4620aa68d4d2f = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;red&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -868,34 +884,34 @@ document.write(`
             );
         
     
-        var popup_b2addded0a7842e556dd590bdd9361ed = L.popup({
+        var popup_77432b09b3d9ffd5053942738b8024fc = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_fceabe3447d9159f8ae1443e15c304d7 = $(`&lt;div id=&quot;html_fceabe3447d9159f8ae1443e15c304d7&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;崇成建材行&lt;br&gt;營業登記年：2005&lt;/div&gt;`)[0];
-                popup_b2addded0a7842e556dd590bdd9361ed.setContent(html_fceabe3447d9159f8ae1443e15c304d7);
+                var html_8dc16d868f9d30bccf942d32ab43d556 = $(`&lt;div id=&quot;html_8dc16d868f9d30bccf942d32ab43d556&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;崇成建材行&lt;br&gt;營業登記年：2005&lt;/div&gt;`)[0];
+                popup_77432b09b3d9ffd5053942738b8024fc.setContent(html_8dc16d868f9d30bccf942d32ab43d556);
             
         
 
-        marker_b692c47a365de8320effc450fd59b0ce.bindPopup(popup_b2addded0a7842e556dd590bdd9361ed)
+        marker_1b3c095722fd4d965ae12aafd702fe9f.bindPopup(popup_77432b09b3d9ffd5053942738b8024fc)
         ;
 
         
     
     
-                marker_b692c47a365de8320effc450fd59b0ce.setIcon(icon_c5de2f58dcac0a2eaa5b8467943fa21a);
+                marker_1b3c095722fd4d965ae12aafd702fe9f.setIcon(icon_5403c9881765d0381ac4620aa68d4d2f);
             
     
-            var marker_37bae8379a2daccdecfb601da40e5167 = L.marker(
+            var marker_9d091278e0f1de1ffe62eaf67492029b = L.marker(
                 [23.9728321, 121.5996267],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_b97d0d4abb318b1de96d1d67fd65baad = L.AwesomeMarkers.icon(
+            var icon_9e83f127822476715f427d774d14f0ee = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;red&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -906,34 +922,34 @@ document.write(`
             );
         
     
-        var popup_af9a5e27e41f243aebe47a3603d01495 = L.popup({
+        var popup_1f64a60cb09e444aba246c2a09f4e08e = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_0986f1c4c7338dcd53b037e1f0b9c60f = $(`&lt;div id=&quot;html_0986f1c4c7338dcd53b037e1f0b9c60f&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;老傳建材行&lt;br&gt;營業登記年：2002&lt;/div&gt;`)[0];
-                popup_af9a5e27e41f243aebe47a3603d01495.setContent(html_0986f1c4c7338dcd53b037e1f0b9c60f);
+                var html_40683d91c8d9c588209f853a4aaf5c02 = $(`&lt;div id=&quot;html_40683d91c8d9c588209f853a4aaf5c02&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;老傳建材行&lt;br&gt;營業登記年：2002&lt;/div&gt;`)[0];
+                popup_1f64a60cb09e444aba246c2a09f4e08e.setContent(html_40683d91c8d9c588209f853a4aaf5c02);
             
         
 
-        marker_37bae8379a2daccdecfb601da40e5167.bindPopup(popup_af9a5e27e41f243aebe47a3603d01495)
+        marker_9d091278e0f1de1ffe62eaf67492029b.bindPopup(popup_1f64a60cb09e444aba246c2a09f4e08e)
         ;
 
         
     
     
-                marker_37bae8379a2daccdecfb601da40e5167.setIcon(icon_b97d0d4abb318b1de96d1d67fd65baad);
+                marker_9d091278e0f1de1ffe62eaf67492029b.setIcon(icon_9e83f127822476715f427d774d14f0ee);
             
     
-            var marker_049fcf4c2dbcf08a9abae4f3571b426f = L.marker(
+            var marker_58c36be84fb5fcd0efc68bc753015aff = L.marker(
                 [23.9829324, 121.5812487],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_f15c7dd4d5efbdde67485bb09759c39a = L.AwesomeMarkers.icon(
+            var icon_c8929f0f480688cd482f0f82e156bfd1 = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;red&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -944,34 +960,34 @@ document.write(`
             );
         
     
-        var popup_d7ed37b90f1c9a067922492f4232ac15 = L.popup({
+        var popup_850d912d056dc2bfa30fe3a0dec73d1a = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_34f300cfa74751d7cbcc29a2574d441b = $(`&lt;div id=&quot;html_34f300cfa74751d7cbcc29a2574d441b&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;豪臆建材行&lt;br&gt;營業登記年：1992&lt;/div&gt;`)[0];
-                popup_d7ed37b90f1c9a067922492f4232ac15.setContent(html_34f300cfa74751d7cbcc29a2574d441b);
+                var html_ef9860e34eee2547cf51ef15506dd077 = $(`&lt;div id=&quot;html_ef9860e34eee2547cf51ef15506dd077&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;豪臆建材行&lt;br&gt;營業登記年：1992&lt;/div&gt;`)[0];
+                popup_850d912d056dc2bfa30fe3a0dec73d1a.setContent(html_ef9860e34eee2547cf51ef15506dd077);
             
         
 
-        marker_049fcf4c2dbcf08a9abae4f3571b426f.bindPopup(popup_d7ed37b90f1c9a067922492f4232ac15)
+        marker_58c36be84fb5fcd0efc68bc753015aff.bindPopup(popup_850d912d056dc2bfa30fe3a0dec73d1a)
         ;
 
         
     
     
-                marker_049fcf4c2dbcf08a9abae4f3571b426f.setIcon(icon_f15c7dd4d5efbdde67485bb09759c39a);
+                marker_58c36be84fb5fcd0efc68bc753015aff.setIcon(icon_c8929f0f480688cd482f0f82e156bfd1);
             
     
-            var marker_a1db87a687a22012c694a2d13f380524 = L.marker(
+            var marker_44834e98b0531f7284964fa74e279a5d = L.marker(
                 [23.9751049, 121.5736817],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_ac9f98f0ac55a312f2050548ab9d90df = L.AwesomeMarkers.icon(
+            var icon_9c425cf630cf53ac29c2c2e9954a6ec2 = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;red&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -982,34 +998,34 @@ document.write(`
             );
         
     
-        var popup_ccc58e4bdc09ac5a6b5e6dfeec23f1c8 = L.popup({
+        var popup_f73d67c640d35c1062c221e6e3bd0140 = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_76195b90265a299a0ba0b75b296025fb = $(`&lt;div id=&quot;html_76195b90265a299a0ba0b75b296025fb&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;祥捷木業&lt;br&gt;營業登記年：1992&lt;/div&gt;`)[0];
-                popup_ccc58e4bdc09ac5a6b5e6dfeec23f1c8.setContent(html_76195b90265a299a0ba0b75b296025fb);
+                var html_47e869028253b0c7ea7e1201f404a1c7 = $(`&lt;div id=&quot;html_47e869028253b0c7ea7e1201f404a1c7&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;祥捷木業&lt;br&gt;營業登記年：1992&lt;/div&gt;`)[0];
+                popup_f73d67c640d35c1062c221e6e3bd0140.setContent(html_47e869028253b0c7ea7e1201f404a1c7);
             
         
 
-        marker_a1db87a687a22012c694a2d13f380524.bindPopup(popup_ccc58e4bdc09ac5a6b5e6dfeec23f1c8)
+        marker_44834e98b0531f7284964fa74e279a5d.bindPopup(popup_f73d67c640d35c1062c221e6e3bd0140)
         ;
 
         
     
     
-                marker_a1db87a687a22012c694a2d13f380524.setIcon(icon_ac9f98f0ac55a312f2050548ab9d90df);
+                marker_44834e98b0531f7284964fa74e279a5d.setIcon(icon_9c425cf630cf53ac29c2c2e9954a6ec2);
             
     
-            var marker_34a852ef686a03ce66a2da068e95c3d5 = L.marker(
+            var marker_abe9cd77872c310e60d5efc3f42dc8a0 = L.marker(
                 [23.9805185, 121.5898376],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_0ca5e8ca79571604d3c6ecd0951759bb = L.AwesomeMarkers.icon(
+            var icon_d44bcac1fc57af4de4da88898f31bd15 = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;red&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -1020,34 +1036,34 @@ document.write(`
             );
         
     
-        var popup_9d20c9440e73ba328940efa44368b63c = L.popup({
+        var popup_e8b7dc6fbda40a6a58969e3568ea8bb4 = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_c4c1db34678d4af886d82dfc50cac1bd = $(`&lt;div id=&quot;html_c4c1db34678d4af886d82dfc50cac1bd&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;立健木業&lt;br&gt;營業登記年：1993&lt;/div&gt;`)[0];
-                popup_9d20c9440e73ba328940efa44368b63c.setContent(html_c4c1db34678d4af886d82dfc50cac1bd);
+                var html_adff686130dbfd2115abb780344181a0 = $(`&lt;div id=&quot;html_adff686130dbfd2115abb780344181a0&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;立健木業&lt;br&gt;營業登記年：1993&lt;/div&gt;`)[0];
+                popup_e8b7dc6fbda40a6a58969e3568ea8bb4.setContent(html_adff686130dbfd2115abb780344181a0);
             
         
 
-        marker_34a852ef686a03ce66a2da068e95c3d5.bindPopup(popup_9d20c9440e73ba328940efa44368b63c)
+        marker_abe9cd77872c310e60d5efc3f42dc8a0.bindPopup(popup_e8b7dc6fbda40a6a58969e3568ea8bb4)
         ;
 
         
     
     
-                marker_34a852ef686a03ce66a2da068e95c3d5.setIcon(icon_0ca5e8ca79571604d3c6ecd0951759bb);
+                marker_abe9cd77872c310e60d5efc3f42dc8a0.setIcon(icon_d44bcac1fc57af4de4da88898f31bd15);
             
     
-            var marker_9209894912a8490f30dfbcbb6247e6bd = L.marker(
+            var marker_573e8e45fb281bfb3c676019fa75d9fc = L.marker(
                 [23.9779513, 121.5888936],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_88b9cab25231c7708b420e3e664a43fd = L.AwesomeMarkers.icon(
+            var icon_544109e13746ea96cff9cba761308b1c = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;green&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -1058,34 +1074,34 @@ document.write(`
             );
         
     
-        var popup_0caadc14fa3138576a9d04782d242d66 = L.popup({
+        var popup_668838d972b42d159177a44a966ece3e = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_acaad2b67aa5e60ea1a4dac32c14f74f = $(`&lt;div id=&quot;html_acaad2b67aa5e60ea1a4dac32c14f74f&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;吉興板模&lt;br&gt;營業登記年：1977&lt;/div&gt;`)[0];
-                popup_0caadc14fa3138576a9d04782d242d66.setContent(html_acaad2b67aa5e60ea1a4dac32c14f74f);
+                var html_bb1b6b466bdf8715dfcd589cea9ddde0 = $(`&lt;div id=&quot;html_bb1b6b466bdf8715dfcd589cea9ddde0&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;吉興板模&lt;br&gt;營業登記年：1977&lt;/div&gt;`)[0];
+                popup_668838d972b42d159177a44a966ece3e.setContent(html_bb1b6b466bdf8715dfcd589cea9ddde0);
             
         
 
-        marker_9209894912a8490f30dfbcbb6247e6bd.bindPopup(popup_0caadc14fa3138576a9d04782d242d66)
+        marker_573e8e45fb281bfb3c676019fa75d9fc.bindPopup(popup_668838d972b42d159177a44a966ece3e)
         ;
 
         
     
     
-                marker_9209894912a8490f30dfbcbb6247e6bd.setIcon(icon_88b9cab25231c7708b420e3e664a43fd);
+                marker_573e8e45fb281bfb3c676019fa75d9fc.setIcon(icon_544109e13746ea96cff9cba761308b1c);
             
     
-            var marker_754bdbf6482d74c5645183d73daf7bec = L.marker(
+            var marker_5cdc49c6c4ddc784542ba5e7d87d0fc2 = L.marker(
                 [23.9764884, 121.5848797],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_911b3872e57004f910e1bcd3b2055be4 = L.AwesomeMarkers.icon(
+            var icon_8d867faaeee7477b595fc50467e0d152 = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;green&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -1096,34 +1112,34 @@ document.write(`
             );
         
     
-        var popup_0a7f10c98696713c0ef6539457f8e9b0 = L.popup({
+        var popup_66e6b488655527e3b931779766ff256b = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_e25d6df0d3905f6a0fd6be4eff82e3ad = $(`&lt;div id=&quot;html_e25d6df0d3905f6a0fd6be4eff82e3ad&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;宏銘企業股份有限公司&lt;br&gt;營業登記年：1967&lt;/div&gt;`)[0];
-                popup_0a7f10c98696713c0ef6539457f8e9b0.setContent(html_e25d6df0d3905f6a0fd6be4eff82e3ad);
+                var html_6f13ebc94087b95adace6afdd6fc98d1 = $(`&lt;div id=&quot;html_6f13ebc94087b95adace6afdd6fc98d1&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;宏銘企業股份有限公司&lt;br&gt;營業登記年：1967&lt;/div&gt;`)[0];
+                popup_66e6b488655527e3b931779766ff256b.setContent(html_6f13ebc94087b95adace6afdd6fc98d1);
             
         
 
-        marker_754bdbf6482d74c5645183d73daf7bec.bindPopup(popup_0a7f10c98696713c0ef6539457f8e9b0)
+        marker_5cdc49c6c4ddc784542ba5e7d87d0fc2.bindPopup(popup_66e6b488655527e3b931779766ff256b)
         ;
 
         
     
     
-                marker_754bdbf6482d74c5645183d73daf7bec.setIcon(icon_911b3872e57004f910e1bcd3b2055be4);
+                marker_5cdc49c6c4ddc784542ba5e7d87d0fc2.setIcon(icon_8d867faaeee7477b595fc50467e0d152);
             
     
-            var marker_1e2b6fa9f9f9c339582941be9e282082 = L.marker(
+            var marker_ef5337b25d437bf736b64e95a39d20ce = L.marker(
                 [23.952665, 121.590732],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_d98d2050d2f3c5b15fb8f8b3b5316316 = L.AwesomeMarkers.icon(
+            var icon_99a3f107447a07af0efe210cd710d361 = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;green&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -1134,34 +1150,34 @@ document.write(`
             );
         
     
-        var popup_97471c48a889eabc7d6cf7f15a587f5e = L.popup({
+        var popup_368c6fa559cc0040d9fbee7c67425385 = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_843c5ac9039b38c97f4027328a166c04 = $(`&lt;div id=&quot;html_843c5ac9039b38c97f4027328a166c04&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;力元建材行&lt;br&gt;營業登記年：1983&lt;/div&gt;`)[0];
-                popup_97471c48a889eabc7d6cf7f15a587f5e.setContent(html_843c5ac9039b38c97f4027328a166c04);
+                var html_eb307882d84a2adb23595de10cf056dd = $(`&lt;div id=&quot;html_eb307882d84a2adb23595de10cf056dd&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;力元建材行&lt;br&gt;營業登記年：1983&lt;/div&gt;`)[0];
+                popup_368c6fa559cc0040d9fbee7c67425385.setContent(html_eb307882d84a2adb23595de10cf056dd);
             
         
 
-        marker_1e2b6fa9f9f9c339582941be9e282082.bindPopup(popup_97471c48a889eabc7d6cf7f15a587f5e)
+        marker_ef5337b25d437bf736b64e95a39d20ce.bindPopup(popup_368c6fa559cc0040d9fbee7c67425385)
         ;
 
         
     
     
-                marker_1e2b6fa9f9f9c339582941be9e282082.setIcon(icon_d98d2050d2f3c5b15fb8f8b3b5316316);
+                marker_ef5337b25d437bf736b64e95a39d20ce.setIcon(icon_99a3f107447a07af0efe210cd710d361);
             
     
-            var marker_200bf41082b879601d8c0cab9bab2b7e = L.marker(
+            var marker_b85c923762088d6987bfc8880a1473ca = L.marker(
                 [23.9729168, 121.6015107],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_50d619eb8070450de6865976c60acffa = L.AwesomeMarkers.icon(
+            var icon_32ff8ffd2f868540ca34c38d0eb9fefb = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;green&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -1172,34 +1188,34 @@ document.write(`
             );
         
     
-        var popup_807e0f9d75ef7896105a2695feabc79b = L.popup({
+        var popup_c466f7da84122e380c039cbe7dd4271d = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_341f827f93bdb6cf0a094aa7bfaa74db = $(`&lt;div id=&quot;html_341f827f93bdb6cf0a094aa7bfaa74db&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;一成木材行&lt;br&gt;營業登記年：1978&lt;/div&gt;`)[0];
-                popup_807e0f9d75ef7896105a2695feabc79b.setContent(html_341f827f93bdb6cf0a094aa7bfaa74db);
+                var html_dffebe400629f631ba2b2630794f1105 = $(`&lt;div id=&quot;html_dffebe400629f631ba2b2630794f1105&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;一成木材行&lt;br&gt;營業登記年：1978&lt;/div&gt;`)[0];
+                popup_c466f7da84122e380c039cbe7dd4271d.setContent(html_dffebe400629f631ba2b2630794f1105);
             
         
 
-        marker_200bf41082b879601d8c0cab9bab2b7e.bindPopup(popup_807e0f9d75ef7896105a2695feabc79b)
+        marker_b85c923762088d6987bfc8880a1473ca.bindPopup(popup_c466f7da84122e380c039cbe7dd4271d)
         ;
 
         
     
     
-                marker_200bf41082b879601d8c0cab9bab2b7e.setIcon(icon_50d619eb8070450de6865976c60acffa);
+                marker_b85c923762088d6987bfc8880a1473ca.setIcon(icon_32ff8ffd2f868540ca34c38d0eb9fefb);
             
     
-            var marker_5434814123520251b6ed4a1a86f7cfdd = L.marker(
+            var marker_3d4877205c36ec2ba821add5f0bff804 = L.marker(
                 [23.9571253, 121.593387],
                 {
 }
-            ).addTo(map_4ecbfc5f5dc9611d845c959f7ee35ae3);
+            ).addTo(map_dedaa70fae0ff8de41e0a06ff60bd0de);
         
     
-            var icon_0a692c7545526087ed9bc500b0b65a48 = L.AwesomeMarkers.icon(
+            var icon_d72ade35bb0a92ad1b9e6bdf5431cce5 = L.AwesomeMarkers.icon(
                 {
   &quot;markerColor&quot;: &quot;green&quot;,
   &quot;iconColor&quot;: &quot;white&quot;,
@@ -1210,35 +1226,35 @@ document.write(`
             );
         
     
-        var popup_0f0b26f1dcd13ab2bc2d22649de096c7 = L.popup({
+        var popup_c6d2b0a361c5ed0d72590e05e861f743 = L.popup({
   &quot;maxWidth&quot;: &quot;100%&quot;,
 });
 
         
             
-                var html_211948eb6b144dbf5e6f591c4f901ea3 = $(`&lt;div id=&quot;html_211948eb6b144dbf5e6f591c4f901ea3&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;燕茂企業股份有限公司&lt;br&gt;營業登記年：1973&lt;/div&gt;`)[0];
-                popup_0f0b26f1dcd13ab2bc2d22649de096c7.setContent(html_211948eb6b144dbf5e6f591c4f901ea3);
+                var html_6cd6bd408654e33b25549b61a27fd2af = $(`&lt;div id=&quot;html_6cd6bd408654e33b25549b61a27fd2af&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;燕茂企業股份有限公司&lt;br&gt;營業登記年：1973&lt;/div&gt;`)[0];
+                popup_c6d2b0a361c5ed0d72590e05e861f743.setContent(html_6cd6bd408654e33b25549b61a27fd2af);
             
         
 
-        marker_5434814123520251b6ed4a1a86f7cfdd.bindPopup(popup_0f0b26f1dcd13ab2bc2d22649de096c7)
+        marker_3d4877205c36ec2ba821add5f0bff804.bindPopup(popup_c6d2b0a361c5ed0d72590e05e861f743)
         ;
 
         
     
     
-                marker_5434814123520251b6ed4a1a86f7cfdd.setIcon(icon_0a692c7545526087ed9bc500b0b65a48);
+                marker_3d4877205c36ec2ba821add5f0bff804.setIcon(icon_d72ade35bb0a92ad1b9e6bdf5431cce5);
             
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
 </div>
 <section id="id2">
-<h2>田浦的區位因素<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>田浦的木業襲產<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>  隨著太魯閣林場在1989年正式裁撤，花蓮的木材產業的夕陽也隨之而至。如今依舊有些許製材廠屹立於城市邊緣，致力於在後福特主義的世界中尋得一處棲所。即使當初使產業聚集的區位因素已經不復存在，但依舊能從木材產業的相關據點追溯過往的<strong>地理叢結(geographic plexus)</strong>。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">folium.plugins</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeatMap</span>
-
 <span class="n">hualien_center</span> <span class="o">=</span> <span class="p">[</span><span class="mf">23.9769</span><span class="p">,</span> <span class="mf">121.6044</span><span class="p">]</span>
 <span class="n">wood_shops</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;大源木業&quot;</span><span class="p">,</span> <span class="s2">&quot;lat&quot;</span><span class="p">:</span> <span class="mf">23.9631485</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">:</span> <span class="mf">121.5733806</span><span class="p">},</span>
@@ -1261,9 +1277,33 @@ document.write(`
     <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;燕茂企業股份有限公司&quot;</span><span class="p">,</span> <span class="s2">&quot;lat&quot;</span><span class="p">:</span> <span class="mf">23.9571253</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">:</span> <span class="mf">121.593387</span><span class="p">},</span>
 <span class="p">]</span>
 
-<span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">hualien_center</span><span class="p">,</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mf">10.5</span><span class="p">,</span> <span class="n">tiles</span><span class="o">=</span><span class="s2">&quot;CartoDB positron&quot;</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
+    <span class="n">location</span><span class="o">=</span><span class="n">hualien_center</span><span class="p">,</span>
+    <span class="n">zoom_start</span><span class="o">=</span><span class="mf">10.5</span><span class="p">,</span>
+    <span class="n">tiles</span><span class="o">=</span><span class="s2">&quot;CartoDB positron&quot;</span><span class="p">,</span>
+    <span class="n">control_scale</span><span class="o">=</span><span class="kc">True</span>   
+<span class="p">)</span>
+
 <span class="n">heat_data</span> <span class="o">=</span> <span class="p">[[</span><span class="n">shop</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">],</span> <span class="n">shop</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">]]</span> <span class="k">for</span> <span class="n">shop</span> <span class="ow">in</span> <span class="n">wood_shops</span><span class="p">]</span>
 <span class="n">HeatMap</span><span class="p">(</span><span class="n">heat_data</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">blur</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">folium</span><span class="o">.</span><span class="n">LatLngPopup</span><span class="p">())</span>
+<span class="n">north_arrow</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;div style=&quot;</span>
+<span class="s2">    position: fixed;</span>
+<span class="s2">    top: 20px;</span>
+<span class="s2">    right: 20px;</span>
+<span class="s2">    width: 60px;</span>
+<span class="s2">    height: 60px;</span>
+<span class="s2">    z-index:9999;</span>
+<span class="s2">    font-size: 18px;</span>
+<span class="s2">    text-align: center;</span>
+<span class="s2">    font-weight: bold;</span>
+<span class="s2">    color: black;</span>
+<span class="s2">&quot;&gt;</span>
+<span class="s2">    ↑&lt;br&gt;N</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">get_root</span><span class="p">()</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">folium</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="n">north_arrow</span><span class="p">))</span>
 
 <span class="n">m</span>
 </pre></div>
@@ -1289,7 +1329,7 @@ document.write(`
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_1548333cba1c1a8e3eb7b3d4f6d08d33 {
+                #map_e99e9c5183b859e45a8862daa0cdfdd0 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -1327,14 +1367,29 @@ document.write(`
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_1548333cba1c1a8e3eb7b3d4f6d08d33&quot; &gt;&lt;/div&gt;
+&lt;div style=&quot;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    z-index:9999;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    color: black;
+&quot;&gt;
+    ↑&lt;br&gt;N
+&lt;/div&gt;
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_e99e9c5183b859e45a8862daa0cdfdd0&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_1548333cba1c1a8e3eb7b3d4f6d08d33 = L.map(
-                &quot;map_1548333cba1c1a8e3eb7b3d4f6d08d33&quot;,
+            var map_e99e9c5183b859e45a8862daa0cdfdd0 = L.map(
+                &quot;map_e99e9c5183b859e45a8862daa0cdfdd0&quot;,
                 {
                     center: [23.9769, 121.6044],
                     crs: L.CRS.EPSG3857,
@@ -1346,12 +1401,13 @@ document.write(`
 
                 }
             );
+            L.control.scale().addTo(map_e99e9c5183b859e45a8862daa0cdfdd0);
 
             
 
         
     
-            var tile_layer_56305d39007e1b1df4b181b6c893bf49 = L.tileLayer(
+            var tile_layer_498a1f1600672a58cd1c0517b5c3c804 = L.tileLayer(
                 &quot;https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png&quot;,
                 {
   &quot;minZoom&quot;: 0,
@@ -1368,10 +1424,10 @@ document.write(`
             );
         
     
-            tile_layer_56305d39007e1b1df4b181b6c893bf49.addTo(map_1548333cba1c1a8e3eb7b3d4f6d08d33);
+            tile_layer_498a1f1600672a58cd1c0517b5c3c804.addTo(map_e99e9c5183b859e45a8862daa0cdfdd0);
         
     
-            var heat_map_98885cf0c4f8c1ff87f10ae3f23734bc = L.heatLayer(
+            var heat_map_f97aca9fe95c7e7fc39908f48e33bcab = L.heatLayer(
                 [[23.9631485, 121.5733806], [23.9765539, 121.586245], [23.9712618, 121.6014286], [23.9721847, 121.5780551], [23.9511861, 121.590686], [23.95916, 121.593787], [23.9977314, 121.6017339], [23.9547848, 121.5631098], [23.9736972, 121.5737778], [23.9728321, 121.5996267], [23.9829324, 121.5812487], [23.9751049, 121.5736817], [23.9805185, 121.5898376], [23.9779513, 121.5888936], [23.9764884, 121.5848797], [23.952665, 121.590732], [23.9729168, 121.6015107], [23.9571253, 121.593387]],
                 {
   &quot;minOpacity&quot;: 0.5,
@@ -1382,11 +1438,28 @@ document.write(`
             );
         
     
-            heat_map_98885cf0c4f8c1ff87f10ae3f23734bc.addTo(map_1548333cba1c1a8e3eb7b3d4f6d08d33);
+            heat_map_f97aca9fe95c7e7fc39908f48e33bcab.addTo(map_e99e9c5183b859e45a8862daa0cdfdd0);
         
+    
+                var lat_lng_popup_82d799aa7fb27d861ed0ecb9bd16cac5 = L.popup();
+                function latLngPop(e) {
+                    lat_lng_popup_82d799aa7fb27d861ed0ecb9bd16cac5
+                        .setLatLng(e.latlng)
+                        .setContent(&quot;Latitude: &quot; + e.latlng.lat.toFixed(4) +
+                                    &quot;&lt;br&gt;Longitude: &quot; + e.latlng.lng.toFixed(4))
+                        .openOn(map_e99e9c5183b859e45a8862daa0cdfdd0);
+                    }
+                map_e99e9c5183b859e45a8862daa0cdfdd0.on(&#x27;click&#x27;, latLngPop);
+            
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
 </div>
+<figure class="align-default" id="id3">
+<img alt="_images/20251224.png" src="_images/20251224.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">田埔地區的木業襲產。來源：筆者以QGIS繪製。</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
@@ -1426,7 +1499,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><strong>基礎設施整備與木業地景</strong></p>
+        <p class="prev-next-title">木業基礎設施與田浦</p>
       </div>
     </a>
 </div>
@@ -1445,7 +1518,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">田浦的區位因素</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">田浦的木業襲產</a></li>
 </ul>
   </nav></div>
 
@@ -1470,7 +1543,7 @@ By Lim Ting-iong
 
   <p class="copyright">
     
-      © Copyright CC BY-NC 4.0.
+      © Copyright BY-NC 4.0.
       <br/>
     
   </p>
